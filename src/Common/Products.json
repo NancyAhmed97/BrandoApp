@@ -1,0 +1,257 @@
+[
+    {
+      "id": 1,
+      "img": "require('../assets/Mask group.png')",
+      "name": "Black Winter...",
+      "desc": "Autumn And Winter Casual cotton-padded jacket... ",
+      "price": "499 EGP",
+      "startingValue": "1",
+      "numberOfRating":"1",
+      "brandName":"brand1",
+      "brandId":1,  
+      "imagesArray":[
+        "require('../assets/Mask group.png')",
+        "require('../assets/productImg.png')"
+
+      ],
+      "sizes":["L","M","S","XS","XL","XXL"],
+      "reviews":[
+        {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},
+        {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]}
+      ]
+    },
+    {
+      "id": 2,
+      "img": "require('../assets/unsplash_0vsk2_9dkqo.png')",
+      "name": "Black Winter...",
+      "desc": "Autumn And Winter Casual cotton-padded jacket... ",
+      "price": "499 EGP",
+      "startingValue": "2",
+      "numberOfRating":"2",
+      "brandName":"brand2",
+      "brandId":2,
+      "imagesArray":[
+        "require('../assets/unsplash_0vsk2_9dkqo.png')",
+        "require('../assets/productImg.png')"
+
+      ],
+      "sizes":["L","M","S","XS","XL","XXL"],
+      "reviews":[
+        {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},
+        {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]}
+      ]
+
+
+
+    },    {
+      "id": 3,
+      "img": "require('../assets/Mask group.png')",
+      "name": "Black Winter...",
+      "desc": "Autumn And Winter Casual cotton-padded jacket... ",
+      "price": "499 EGP",
+      "startingValue": "3",
+      "numberOfRating":"3",
+      "brandName":"brand3",
+      "brandId":3,
+      "imagesArray":[
+        "require('../assets/Mask group.png')",
+        "require('../assets/productImg.png')"
+
+      ],
+      "sizes":["L","M","S","XS","XL","XXL"],   "reviews":[
+        {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},
+        {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]}
+      ]
+
+
+
+    },    
+    {
+      "id": 4,
+      "img": "require('../assets/unsplash_0vsk2_9dkqo.png')",
+      "name": "Black Winter...",
+      "desc": "Autumn And Winter Casual cotton-padded jacket... ",
+      "price": "499 EGP",
+      "startingValue": "4",
+      "numberOfRating":"4",
+      "brandName":"brand4",
+      "brandId":4,
+      "imagesArray":[
+        "require('../assets/unsplash_0vsk2_9dkqo.png')",
+        "require('../assets/productImg.png')"
+
+      ],      "sizes":["L","M","S","XS","XL","XXL"],   "reviews":[
+        {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},
+        {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]}
+      ]
+
+
+
+    },
+    {
+      "id": 5,
+      "img": "require('../assets/Mask group.png')",
+      "name": "Black Winter...",
+      "desc": "Autumn And Winter Casual cotton-padded jacket... ",
+      "price": "499 EGP",
+      "startingValue": "5",
+      "numberOfRating":"5",
+      "brandName":"brand5",
+      "brandId":5,
+      "imagesArray":[
+        "require('../assets/Mask group.png')",
+        "require('../assets/productImg.png')"
+
+      ],      "sizes":["L","M","S","XS","XL","XXL"],
+      "reviews":[
+        {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},
+        {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]}
+      ]
+
+
+
+    },
+    {
+      "id": 6,
+      "img": "require('../assets/unsplash_0vsk2_9dkqo.png')",
+      "name": "Black Winter...",
+      "desc": "Autumn And Winter Casual cotton-padded jacket... ",
+      "price": "499 EGP",
+      "startingValue": "6",
+      "numberOfRating":"6",
+      "brandName":"brand6",
+      "brandId":6,
+      "imagesArray":[
+        "require('../assets/unsplash_0vsk2_9dkqo.png')",
+        "require('../assets/productImg.png')"
+
+      ],      "sizes":["L","M","S","XS","XL","XXL"],
+      "reviews":[
+        {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},
+        {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]},    {"id":11,"name":"nancy","date":"1/6/2023","reviewNumber":3,"color":"red","size":"S","review":"jflsjfkdsfjsdlfs","images":[
+          "require('../assets/Mask group.png')",
+          "require('../assets/productImg.png')"
+  
+        ]}
+      ]
+
+
+
+    }
+  ]
