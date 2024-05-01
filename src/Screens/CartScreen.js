@@ -36,18 +36,19 @@ const CartScreen = ({ navigation }) => {
     >
       <View
         style={{
-          justifyContent: "center",
           marginTop: Dimensions.get('screen').height / 40,
           marginBottom: Dimensions.get('screen').height / 50,
-          alignItems: 'center',
+          paddingHorizontal: Dimensions.get('screen').width / 15,
+
 
 
         }}
       >
         <Text
           style={{
-            color: "#000",
-            fontWeight: 'bold'
+            marginVertical: 20,
+            fontWeight:'bold',
+            fontSize:24
           }}
         >
           Cart

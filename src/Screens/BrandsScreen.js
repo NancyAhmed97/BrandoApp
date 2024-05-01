@@ -1,129 +1,82 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
-import HomeNavbar from '../Common/HomeNavbar'
-import Brandbar from '../Common/Brandbar'
-import SearchInput from '../Common/SearchInput'
-import { useNavigation } from '@react-navigation/native'
+import { View, Text, Dimensions, ScrollView, FlatList, TouchableOpacity, Image } from 'react-native'
+import React, { useState } from 'react'
+import CommonHeader from '../Common/CommonHeader'
 
-const BrandsScreen = () => {
-  const navigation=useNavigation();
-
-  const images = [
-    require('../assets/Group 33833.png'),
-    require('../assets/Group 33834.png'),
-    require('../assets/Group 33826.png'),
-    require('../assets/Group 33830.png'),
-    require('../assets/Group 33828.png'),
-    require('../assets/Group 33829.png'),
-    require('../assets/Group 33831.png'),
-
-
-  ]
-  return (
-    <View
-      style={{
-        backgroundColor: '#FDFDFD',
-        flex: 1,
-        paddingHorizontal: 22
-      }}
-    >
-      <HomeNavbar
-        text={"All Brands"}
-      />
-      <View>
-
-        <SearchInput
-          text={"Search any Product.."}
-        />
-      </View>
-<View
-style={{
-  marginVertical:12,
-  flexDirection:'row',
-  justifyContent:'space-between'
-}}
->
-  <Text
-   style={{
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#322068'
-  }}
-  >
-    All Brands
-    </Text>
-    <View
-    style={{
-      flexDirection:'row',
-    }}
-    >
-<TouchableOpacity
-
->
-  <View
-  style={{
-    flexDirection:'row',
-    marginRight:10,
-    backgroundColor:'white'
-  
-  }}
-  >
-  <Text>Sort</Text>
-  <Image
-  source={require('../assets/Vector.png')}
-  />
-  </View>
-</TouchableOpacity>
-<TouchableOpacity>
-<View
-  style={{
-    flexDirection:'row',
-    marginRight:10,
-    backgroundColor:'white'
-  
-  }}
-  >
-  <Text>Filter</Text>
-  <Image
-  source={require('../assets/Component 1.png')}
-  />
-  </View>
-</TouchableOpacity>
-    </View>
-</View>
-      <ScrollView>
-        <View
-          style={{
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between'
-          }}
-        >
-          {images.map((img, index) => {
-            return (
-              <TouchableOpacity
+const BrandsScreen = ({navigation}) => {
+    const brandsItems = [
+        { id: 1, name: 'brand1', img: require('../assets/Ellipse 12.png') },
+        { id: 1, name: 'brand2', img: require('../assets/Ellipse 12.png') },
+        { id: 1, name: 'brand3', img: require('../assets/Ellipse 12.png') },
+        { id: 1, name: 'brand4', img: require('../assets/Ellipse 12.png') },
+        { id: 1, name: 'brand5', img: require('../assets/Ellipse 12.png') },
+        { id: 1, name: 'brand6', img: require('../assets/Ellipse 12.png') },
+        { id: 1, name: 'brand7', img: require('../assets/Ellipse 12.png') },
+        { id: 1, name: 'brand8', img: require('../assets/Ellipse 12.png') },
+    ];
+    const renderItem = ({ item }) => {
+        console.log(item);
+        return (
+            <TouchableOpacity
                 style={{
-                  width: "49%",
-                  marginBottom: 12
+                    width: "49%",
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginBottom: 12,
+                    backgroundColor: '#fff',
+                    marginRight: 7,
+                    padding: 22,
+                    borderRadius: 12
                 }}
-                onPress={()=>{
-                  navigation.navigate('branddetails',{
-                    id:"id",
-                    name:"name"
-                  })
-                }}
-              >
+                onPress={()=>navigation.navigate('ProductsList',{
+                    "name":item.name,
+                    "id":item.id
+                })}
+            >
+                <View
+                    style={{
+                        width: 75,
+                        height: 75
+                    }}
+                >
+                    <Image source={item.img} />
+                    <Text
+                        style={{
+                            marginTop: 7,
+                            alignSelf: 'center'
 
-                <Image source={img} />
-              </TouchableOpacity>
-            )
-          })}
+                        }}
+                    >{item.name}</Text>
+
+                </View>
+            </TouchableOpacity>
+        )
+    }
+    return (
+        <View
+            style={{
+                flex: 1,
+                justifyContent: 'space-between',
+                paddingVertical: Dimensions.get('screen').height / 30,
+                backgroundColor: '#f7f7fa',
+                paddingHorizontal: 22
+
+            }}
+        >
+            <CommonHeader
+                headerState={'Our Brands'}
+            />
+            <ScrollView
+                showsVerticalScrollIndicator={false}>
+                <FlatList
+                    key={`FlatList-${2}`}
+                    data={brandsItems}
+                    numColumns={2}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                />
+            </ScrollView>
         </View>
-        <View>
-        </View>
-      </ScrollView>
-    </View>
-  )
+    )
 }
 
 export default BrandsScreen

@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
   StyleSheet,
@@ -17,6 +18,7 @@ const Item = ({ name, details }) => (
 
 // the filter
 const List = ({ searchPhrase, setClicked, data }) => {
+  const navigation=useNavigation();
   const renderItem = ({ item }) => {
     // when no input, show all
     if (searchPhrase === "") {
@@ -37,6 +39,9 @@ const List = ({ searchPhrase, setClicked, data }) => {
       <View
         onStartShouldSetResponder={() => {
           setClicked(false);
+          navigation.navigate('ProductDetails',{
+            "id":1
+          })
         }}
       >
         <FlatList

@@ -8,7 +8,7 @@ const ReviewContainer = ({
     date,
     reviewNumber,
     id,
-    color,
+    bgcolor,
     size,
     review,
     images,
@@ -17,99 +17,115 @@ const ReviewContainer = ({
     const navigation = useNavigation();
 
     return (
-   <TouchableOpacity
-   onPress={()=>navigation.navigate('reviews')}
-   style={{
-    borderBottomWidth:1,
-    borderBottomColor:'rgba(244, 244, 244, 1)',
-    paddingBottom:12,
-    marginBottom:12
-   }}
-   
-   >
-         <View
+        <TouchableOpacity
+            onPress={() => navigation.navigate('reviews')}
             style={{
-
+                borderBottomWidth: 1,
+                borderBottomColor: 'rgba(244, 244, 244, 1)',
+                paddingBottom: 12,
+                marginBottom: 12
             }}
+
         >
-      
             <View
                 style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between'
+
                 }}
             >
+
                 <View
                     style={{
                         flexDirection: 'row',
-                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        alignItems:'center'
                     }}
                 >
-                    <Text
+                    <View
                         style={{
-                            marginRight: 7
-
+                            flexDirection: 'row',
+                            alignItems: 'center',
                         }}
                     >
-                        {name}
+                        <Text
+                            style={{
+                                marginRight: 7,
+                                fontSize:16,
+                                fontWeight:'500'
+
+                            }}
+                        >
+                            {name}
+                        </Text>
+            
+                    </View>
+                    
+                    <View>
+                        <Text>{date}</Text>
+                    </View>
+                </View>
+                
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        marginVertical: 7
+
+                    }}
+                >
+                    {
+                        bgcolor &&
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <Text>color:</Text>
+                            <View
+                                style={{
+                                    backgroundColor: { bgcolor },
+                                    width: 15,
+                                    height: 15,
+                                    borderRadius: '50%',
+                                    marginLeft: 3
+                                }}
+                            ></View>
+
+                        </View>
+                    }
+                    {
+                        size &&
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                marginLeft: 7,
+                                alignItems: 'center'
+                            }}
+                        >
+                            <Text>Size:</Text>
+                            <Text>{size}</Text>
+
+                        </View>
+                    }
+
+                </View>
+                <Rating
+                            ratingCount={6}
+                            imageSize={13}
+                            readonly={true}
+                            startingValue={reviewNumber}
+                            style={{
+                                alignSelf:'flex-start'
+                            }}
+                        />
+                <View
+                    style={{
+                        marginVertical: 14
+                    }}
+                >
+                    <Text>
+                        {review}
                     </Text>
-                    <Rating
-                        ratingCount={6}
-                        imageSize={13}
-                        readonly={true}
-                        startingValue={reviewNumber}
-                    />
-                </View>
-                <View>
-                    <Text>{date}</Text>
-                </View>
-            </View>
-            <View
-                style={{
-                    flexDirection: 'row',
-                    marginVertical: 7
-
-                }}
-            >
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        alignItems:'center'
-                    }}
-                >
-                    <Text>color:</Text>
-                    <View
-                    style={{
-                         backgroundColor:{color},
-                         width:15,
-                         height:15,
-                         borderRadius:'50%',
-                         marginLeft:3
-                    }}
-                    ></View>
-
-                </View>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        marginLeft: 7,
-                        alignItems:'center'
-                    }}
-                >
-                    <Text>Size:</Text>
-                    <Text>{size}</Text>
-
-                </View>
-            </View>
-            <View
-            style={{
-                marginVertical:7
-            }}
-            >
-                <Text>
-                    {review}
-                </Text>
-                {/* <View
+                    {/* <View
                 style={{
                     flexWrap:'wrap',
                     flexDirection:'row',
@@ -125,10 +141,10 @@ const ReviewContainer = ({
                     <Image source={require('../assets/Mask group.png')}style={{width:Dimensions.get('screen').width/4,marginBottom:7}} />
 
                 </View> */}
-            </View>
+                </View>
 
-        </View>
-   </TouchableOpacity>
+            </View>
+        </TouchableOpacity>
     )
 }
 

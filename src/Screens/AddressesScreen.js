@@ -6,36 +6,36 @@ import axios from 'axios';
 
 const AddressesScreen = ({ route }) => {
   const { addState } = route.params
-//   const [country, setCountry] = useState('');
-//   const [region, setRegion] = useState('');
-//   const selectCountry = (val) => {
-//     setCountry(val)
-//   }
+  //   const [country, setCountry] = useState('');
+  //   const [region, setRegion] = useState('');
+  //   const selectCountry = (val) => {
+  //     setCountry(val)
+  //   }
 
-//   const selectRegion = (val) => {
-// setRegion(val) 
-//  }
-useEffect(() => {
-const x=async()=>{
-  const url = 'https://wft-geo-db.p.rapidapi.com/v1/geo/countries/Egypt/regions/CA/cities';
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '5d2d3ecc48msh9f99f31505a6d00p1e231bjsn43cc0aa39fb1',
-      'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
+  //   const selectRegion = (val) => {
+  // setRegion(val) 
+  //  }
+  useEffect(() => {
+    const x = async () => {
+      const url = 'https://wft-geo-db.p.rapidapi.com/v1/geo/countries/Egypt/regions/CA/cities';
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': '5d2d3ecc48msh9f99f31505a6d00p1e231bjsn43cc0aa39fb1',
+          'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
+        }
+      };
+
+      try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        console.log(JSON.parse(result).data);
+      } catch (error) {
+        console.error(error);
+      }
     }
-  };
-  
-  try {
-    const response = await fetch(url, options);
-    const result = await response.text();
-    console.log(JSON.parse(result).data);
-  } catch (error) {
-    console.error(error);
-  }
-}
-x()
-}, [])
+    x()
+  }, [])
 
   return (
     <View
@@ -194,24 +194,24 @@ x()
 
         <View>
 
-<ProfileHeader
-  icon={''}
-  label={'address'}
-  height={Dimensions.get('screen').height / 30}
-  iconHeight={24}
-  iconWidth={24}
-  positionTop={''}
-  positionLeft={''}
-  changeValue={(text) => { }}
-  value={''}
-  secureTextEntry={false}
-  keyboardType={''}
-  margintop={22}
+          <ProfileHeader
+            icon={''}
+            label={'address'}
+            height={Dimensions.get('screen').height / 30}
+            iconHeight={24}
+            iconWidth={24}
+            positionTop={''}
+            positionLeft={''}
+            changeValue={(text) => { }}
+            value={''}
+            secureTextEntry={false}
+            keyboardType={''}
+            margintop={22}
 
 
-/>
+          />
 
-</View>
+        </View>
         {/* <CountryDropdown
         value={country}
         onChange={(val) => setCountry(val)} />

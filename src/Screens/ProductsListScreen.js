@@ -47,7 +47,7 @@ const ProductsListScreen = ({ route }) => {
                                     brandName={item.brandName}
                                     state={'wishList'}
                                     brandId={item.brandId}
-                                    navigationState={'productDetails'}
+                                    navigationState={'ProductDetails'}
                                 />
                             </View>
                         )

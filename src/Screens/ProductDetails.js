@@ -1,18 +1,26 @@
-import { View, Text, Dimensions, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, Dimensions, StyleSheet, Image, ScrollView, TouchableOpacity, FlatList, StatusBar } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import CompoNanbar from '../Common/CompoNanbar'
 import PagerView from 'react-native-pager-view';
 import products from "../Common/Products.json";
 import { Rating } from 'react-native-ratings';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, Feather } from '@expo/vector-icons';
 import CommonButton from "../Common/CommonButton"
 import SimilarProducts from '../Components/SimilarProducts';
 import ReviewContainer from '../Components/ReviewContainer';
 import { useNavigation } from '@react-navigation/native'
+
 const ProductDetails = ({ route }) => {
     const [sizeValue, setSizeValue] = useState(null)
     const [favState, setFavState] = useState(false)
     const [isActionTriggered, setActionTriggered] = useState(false);
+    const [deliveryState, setDeliveryState] = useState(1);
+    const [colorName, setColorName] = useState('red');
+    const [sizeName, setSizeName] = useState('S');
+    const [colorState, setColorState] = useState(1);
+    const [sizeState, setSizeState] = useState(1);
+    const [numColumns, setNumColumns] = useState(5); // Initial number of columns
+    const [sizeNumColumns, setSizeNumColumns] = useState(8); // Initial number of columns
     const { id } = route.params;
     const navigation = useNavigation();
     const productDetails = products.filter((item) => item.id == id)
@@ -32,15 +40,89 @@ const ProductDetails = ({ route }) => {
 
         }
     };
+    const FlatItem = (items) => {
+        return (
+            // <Text>{items.title.name}</Text>
+            <TouchableOpacity
+                style={{
+                    marginRight: 12,
+                    marginBottom: 12,
+                    borderWidth: colorState === items.title.id ? 1 : 0,
+                    borderColor: 'rgba(151, 84, 187, 1)',
+                    borderRadius: 8
+                }}
+                onPress={() => {
+                    setColorState(items.title.id)
+                    setColorName(items.title.name)
+                }}
+            >
+                <Image source={items.title.img} />
+            </TouchableOpacity>)
+    }
+    const SizeFlatItem = (items) => {
+        return (
+            <TouchableOpacity
+                style={{
+                    marginRight: 12,
+                    marginBottom: 5,
+                    borderWidth: sizeState === items.title.id ? 1 : 0,
+                    borderColor: 'rgba(151, 84, 187, 1)',
+                    borderRadius: 8,
+                    padding: 5
+                }}
+                onPress={() => {
+                    setSizeState(items.title.id)
+                    setSizeName(items.title.name)
+                }}
+            >
+                <Text>{items.title.name}</Text>
+            </TouchableOpacity>
+        )
+    }
+    const colorsItems = [
+        { id: 1, name: 'red', img: require('../assets/Rectangle 239.png') },
+        { id: 2, name: 'green', img: require('../assets/Rectangle 239.png') },
+        { id: 3, name: 'green', img: require('../assets/Rectangle 239.png') },
+        { id: 4, name: 'green', img: require('../assets/Rectangle 239.png') },
+        { id: 5, name: 'green', img: require('../assets/Rectangle 239.png') },
+        { id: 6, name: 'green', img: require('../assets/Rectangle 239.png') },
+        { id: 7, name: 'green', img: require('../assets/Rectangle 239.png') },
+
+    ]
+
+    const sizeItems = [
+        { id: 1, name: 'S' },
+        { id: 2, name: 'M' },
+        { id: 3, name: 'XS' },
+        { id: 4, name: 'L' },
+        { id: 5, name: 'XL' },
+        { id: 6, name: 'XXL' },
+        { id: 7, name: 'XXXL' },
+        { id: 7, name: 'XXXL' },
+        { id: 7, name: 'XXXL' },
+        { id: 7, name: 'XXXL' },
+
+    ]
+    const DeliveryItem = [
+        { id: 1, name: 'Standart', days: '5-7 days', price: '$3,00' },
+        { id: 2, name: 'Express', days: '1-2 days', price: '$12,00' },
+    ]
+    console.log(deliveryState);
     return (
         <View
             style={{
-                marginTop: Dimensions.get('screen').height / 20,
+                paddingTop: Dimensions.get('screen').height / 20,
                 flex: 1,
                 marginBottom: Dimensions.get('screen').height / 23,
+                backgroundColor: '#fff'
             }}
         >
+            <StatusBar
 
+                animated={true}
+                backgroundColor="#fff"
+
+            />
             <CompoNanbar />
             <ScrollView
                 onScroll={handleScroll}
@@ -62,7 +144,6 @@ const ProductDetails = ({ route }) => {
                 {/******************* info product ****************************/}
                 <View
                     style={{
-                        marginHorizontal: Dimensions.get('screen').width / 20,
 
                     }}
                 >
@@ -70,10 +151,82 @@ const ProductDetails = ({ route }) => {
                         style={{
                             flexDirection: 'row',
                             marginBottom: 7,
-                            alignItems: 'center'
+                            alignItems: 'center',
+                            paddingHorizontal: Dimensions.get('screen').width / 20,
+                            justifyContent: 'space-between'
+
 
                         }}
                     >
+
+                        <Text
+                            style={{
+                                marginLeft: 5,
+                                color: 'rgba(0, 0, 0, 1)',
+                                fontSize: 20,
+                                fontWeight: '700',
+
+                            }}
+                        >
+                            {productDetails[0].name}
+                        </Text>
+
+                        <TouchableOpacity>
+                            <Feather name="share-2" size={24} color="black" />
+
+                        </TouchableOpacity>
+                    </View>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            marginBottom: 12,
+                            paddingHorizontal: Dimensions.get('screen').width / 20,
+
+                        }}
+                    >
+                        <Text
+                            style={{
+                                fontSize: 16,
+                                fontWeight: '600'
+                            }}
+                        >BrandName: </Text>
+                        <TouchableOpacity
+                            onPress={() => {
+                                navigation.navigate('ProductsList', {
+                                    "brandId": productDetails[0].brandId,
+                                    "name":productDetails[0].brandName
+                                })
+                            }}
+                        >
+
+                            <Text
+                                style={{
+                                    color: '#9754BB',
+                                    fontSize: 16,
+                                    fontWeight: '600'
+                                }}
+                            >
+                                {productDetails[0].brandName}
+
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            marginBottom: 12,
+                            paddingHorizontal: Dimensions.get('screen').width / 20,
+
+                        }}
+                    >
+                        <Text
+                            style={{
+                                fontSize: 16,
+                                fontWeight: '600'
+                            }}
+                        >Price: </Text>
                         <TouchableOpacity
                             onPress={() => {
                                 navigation.navigate('branddetails', {
@@ -85,194 +238,308 @@ const ProductDetails = ({ route }) => {
                             <Text
                                 style={{
                                     color: '#9754BB',
-                                    fontSize: 15,
-                                    fontWeight: '500'
+                                    fontSize: 16,
+                                    fontWeight: '600'
                                 }}
                             >
-                                {productDetails[0].brandName}
+                                {productDetails[0].price}
 
                             </Text>
                         </TouchableOpacity>
-
-                        <Text
-                            style={{
-                                marginLeft: 5,
-                                color: 'rgba(0, 0, 0, 1)',
-                                fontSize: 12,
-                                fontWeight: '500'
-                            }}
-                        >
-                            {productDetails[0].name}
-                        </Text>
                     </View>
 
-                    <Text>{productDetails[0].desc}</Text>
+
 
                     <View
-                        style={{ flexDirection: 'row' }}
-                    >
-                        <Rating
-                            ratingCount={6}
-                            imageSize={13}
-                            readonly={true}
-                            startingValue={productDetails[0].startingValue}
-                        />
-                        <Text
-                            style={{
-                                marginLeft: 4,
-                                color: 'rgba(164, 169, 179, 1)',
-                                fontSize: 10,
-                                fontWeight: '400'
-                            }}
-                        >
-                            {productDetails[0].numberOfRating}
-                        </Text>
-
-                    </View>
-                    <Text
                         style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
                             marginBottom: 7,
-                            color: 'rgba(0, 0, 0, 1)',
-                            fontSize: 12,
-                            fontWeight: '500'
+                            paddingHorizontal: Dimensions.get('screen').width / 20,
+
                         }}
                     >
-                        {productDetails[0].price}
-                    </Text>
-                    <View
-                        style={{
-                            flexDirection: 'row'
-                        }}
-                    >
-                        <Text>Size:</Text>
-                        <Text>{sizeValue}</Text>
+                        <Text
+                            style={{
+                                fontSize: 16,
+                                fontWeight: '600'
+                            }}
+                        >Color : </Text>
+
+
+                        <Text
+                            style={{
+                                color: '#9754BB',
+                                fontSize: 16,
+                                fontWeight: '600'
+                            }}
+                        >
+                            {colorName}
+                        </Text>
                     </View>
                     <View
                         style={{
-                            flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-between'
+                            marginBottom: 12,
+                            paddingHorizontal: Dimensions.get('screen').width / 20,
+
                         }}
                     >
-
-                        {productDetails[0].sizes.map((item, index) => {
-                            return (
-                                <TouchableOpacity
-                                    key={index}
-                                    style={{
-                                        width: Dimensions.get('screen').width / 6,
-                                        marginBottom: 7,
-                                        padding: 7,
-                                        borderWidth: 1,
-                                        borderColor: 'rgba(151, 84, 187, 1)',
-                                        alignItems: 'center',
-                                        justifyContent: "center",
-                                        borderRadius: 4,
-                                        backgroundColor: sizeValue === item ? "rgba(151, 84, 187, 1)" : "#fff"
-                                    }}
-                                    onPress={() => {
-                                        setSizeValue(item)
-                                    }}
-                                >
-                                    <Text
-                                        style={{
-                                            fontSize: 12,
-                                            fontWeight: 600,
-                                            color: sizeValue !== item ? "rgba(151, 84, 187, 1)" : "#fff"
-
-                                        }}
-                                    >
-                                        {item}
-                                    </Text>
-                                </TouchableOpacity>
-
-                            )
-                        })}
+                        <FlatList
+                            key={`FlatList-${numColumns}`}
+                            data={colorsItems}
+                            numColumns={numColumns}
+                            renderItem={({ item }) => <FlatItem title={item} />}
+                            keyExtractor={item => item.id}
+                        />
                     </View>
 
-                    <Text>jlfkjkfl</Text>
-                    <Text>jlfkjkfl</Text>
-                    <Text>jlfkjkfl</Text>
-                    <Text>jlfkjkfl</Text>
-                    <Text>jlfkjkfl</Text>
-                    <Text>jlfkjkfl</Text>
-                    <Text>jlfkjkfl</Text>
-                    <Text>jlfkjkfl</Text>
-                    <Text>jlfkjkfl</Text>
-                    <Text>jlfkjkfl</Text>
-                    <Text>jlfkjkfl</Text>
-                    <Text>jlfkjkfl</Text>
-                    <Text>jlfkjkfl</Text>
+
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            marginBottom: 7,
+                            paddingHorizontal: Dimensions.get('screen').width / 20,
+                            borderTopWidth: 7,
+                            borderTopColor: 'rgba(244, 244, 244, 1)',
+                            paddingVertical: 7,
+
+
+
+                        }}
+                    >
+                        <Text
+                            style={{
+                                fontSize: 16,
+                                fontWeight: '600'
+                            }}
+                        >Size : </Text>
+
+
+                        <Text
+                            style={{
+                                color: '#9754BB',
+                                fontSize: 16,
+                                fontWeight: '600'
+                            }}
+                        >
+                            {sizeName}
+                        </Text>
+                    </View>
+                    <View
+                        style={{
+                            marginBottom: 12,
+                            paddingHorizontal: Dimensions.get('screen').width / 20,
+
+                        }}
+                    >
+                        <FlatList
+                            key={`FlatList-${sizeNumColumns}`}
+                            data={sizeItems}
+                            numColumns={sizeNumColumns}
+                            renderItem={({ item }) => <SizeFlatItem title={item} />}
+                            keyExtractor={item => item.id}
+                        />
+                    </View>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            marginBottom: 7,
+                            paddingHorizontal: Dimensions.get('screen').width / 20,
+                            borderTopWidth: 7,
+                            borderTopColor: 'rgba(244, 244, 244, 1)',
+                            paddingVertical: 7,
+
+
+
+                        }}
+                    >
+                        <Text
+                            style={{
+                                fontSize: 16,
+                                fontWeight: '600'
+                            }}
+                        >Size Guide : </Text>
+
+
+
+                    </View>
+                    <View
+                        style={{
+                            marginBottom: 12,
+
+                        }}
+                    >
+                        <Image source={require('../assets/Rectangle 172.png')}
+                            style={{
+                                width: '100%'
+                            }}
+                        />
+                    </View>
+
+                    <View
+                        style={{
+                            paddingVertical: 18,
+                            borderTopWidth: 7,
+                            borderTopColor: 'rgba(244, 244, 244, 1)',
+                            paddingHorizontal: Dimensions.get('screen').width / 20,
+
+
+                        }}
+                    >
+                        <Text
+                            style={{
+                                fontWeight: '700',
+                                fontSize: 20,
+                                marginBottom: 12
+                            }}
+                        >Product Details</Text>
+                        <Text>{productDetails[0].desc}</Text>
+                    </View>
+
+
                 </View>
-                {/******************* reviews product ****************************/}
+                {/*******************Delivery******************************* */}
                 <View
                     style={{
                         paddingVertical: 22,
                         borderTopWidth: 7,
                         borderTopColor: 'rgba(244, 244, 244, 1)',
                         paddingHorizontal: Dimensions.get('screen').width / 20,
-
                     }}
                 >
                     <Text
                         style={{
-                            color: 'rgba(0, 0, 0, 1)',
+                            fontWeight: '700',
                             fontSize: 20,
-                            fontWeight: '600',
                             marginBottom: 12
                         }}
-                    >Reviews</Text>
-                    <ReviewContainer
-                        name={productDetails[0].reviews[0].name}
-                        date={productDetails[0].reviews[0].date}
-                        reviewNumber={productDetails[0].reviews[0].reviewNumber}
-                        id={productDetails[0].reviews[0].id}
-                        color={productDetails[0].reviews[0].color}
-                        size={productDetails[0].reviews[0].size}
-                        review={productDetails[0].reviews[0].review}
-                        images={productDetails[0].reviews[0].images}
-                    />
-                    <ReviewContainer
-                        name={productDetails[0].reviews[0].name}
-                        date={productDetails[0].reviews[0].date}
-                        reviewNumber={productDetails[0].reviews[0].reviewNumber}
-                        id={productDetails[0].reviews[0].id}
-                        color={productDetails[0].reviews[0].color}
-                        size={productDetails[0].reviews[0].size}
-                        review={productDetails[0].reviews[0].review}
-                        images={productDetails[0].reviews[0].images}
-                    />
-                    <ReviewContainer
-                        name={productDetails[0].reviews[0].name}
-                        date={productDetails[0].reviews[0].date}
-                        reviewNumber={productDetails[0].reviews[0].reviewNumber}
-                        id={productDetails[0].reviews[0].id}
-                        color={productDetails[0].reviews[0].color}
-                        size={productDetails[0].reviews[0].size}
-                        review={productDetails[0].reviews[0].review}
-                        images={productDetails[0].reviews[0].images}
-                    />
-                    <ReviewContainer
-                        name={productDetails[0].reviews[0].name}
-                        date={productDetails[0].reviews[0].date}
-                        reviewNumber={productDetails[0].reviews[0].reviewNumber}
-                        id={productDetails[0].reviews[0].id}
-                        color={productDetails[0].reviews[0].color}
-                        size={productDetails[0].reviews[0].size}
-                        review={productDetails[0].reviews[0].review}
-                        images={productDetails[0].reviews[0].images}
-                    />
-                    <TouchableOpacity
+                    >Delivery</Text>
+                    {DeliveryItem.map((item) => {
+                        return (
+                            <TouchableOpacity
+                                onPress={() => setDeliveryState(item.id)}
+                                style={{
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    borderColor: 'rgba(174, 100, 204, 1)',
+                                    borderWidth: 1,
+                                    marginBottom: 7,
+                                    padding: 12,
+                                    borderRadius: 10,
+                                    backgroundColor: deliveryState === item.id ? 'rgba(174, 100, 204, 1)' : '#ededed'
+
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        fontSize: 16,
+                                        fontWeight: '500',
+                                        color: deliveryState === item.id ? 'white' : '#000'
+                                    }}
+                                >{item.name}</Text>
+
+                                <Text
+                                    style={{
+                                        fontSize: 13,
+                                        fontWeight: '500',
+                                        color: deliveryState === item.id ? 'white' : '#000'
+
+                                    }}
+                                >{item.days}</Text>
+
+                                <Text
+                                    style={{
+                                        fontSize: 16,
+                                        fontWeight: 'bold',
+                                        color: deliveryState === item.id ? 'white' : '#000'
+
+                                    }}
+                                >{item.price}</Text>
+                            </TouchableOpacity>
+                        )
+                    })}
+
+                </View>
+                {/******************* reviews product ****************************/}
+
+                <View
+                    style={{
+                        paddingVertical: 22,
+                        borderTopWidth: 7,
+                        borderTopColor: 'rgba(244, 244, 244, 1)',
+                        paddingHorizontal: Dimensions.get('screen').width / 20,
+                    }}
+                >
+                    <Text
                         style={{
-                            justifyContent: 'center',
+                            fontWeight: '700',
+                            fontSize: 20
+                        }}
+                    >Rating & Reviews</Text>
+                    <View
+                        style={{
+                            flexDirection: 'row',
                             alignItems: 'center',
-                            flexDirection: 'row'
+                            marginVertical: 12
                         }}
                     >
+                        <Rating
+                            ratingCount={6}
+                            imageSize={20}
+                            readonly={true}
+                            startingValue={5}
+                        />
+                        <Text
+                            style={{
+                                marginLeft: 12,
+                                backgroundColor: 'rgba(174, 100, 204, 1)',
+                                color: '#fff',
+                                padding: 5,
+                                fontWeight: 'bold',
+                                fontSize: 12,
+                            }}
+                        >4/5</Text>
+                    </View>
+                    <ReviewContainer
+                        name={productDetails[0].reviews[0].name}
+                        date={productDetails[0].reviews[0].date}
+                        reviewNumber={productDetails[0].reviews[0].reviewNumber}
+                        id={productDetails[0].reviews[0].id}
+                        // bgcolor={productDetails[0].reviews[0].color}
+                        // size={productDetails[0].reviews[0].size}
+                        review={productDetails[0].reviews[0].review}
+                        images={productDetails[0].reviews[0].images}
+                    />
 
-                        <Text>View More</Text>
-                        <Ionicons name="chevron-forward-outline" size={20} color="#000" />
-
-                    </TouchableOpacity>
+                    <ReviewContainer
+                        name={productDetails[0].reviews[0].name}
+                        date={productDetails[0].reviews[0].date}
+                        reviewNumber={productDetails[0].reviews[0].reviewNumber}
+                        id={productDetails[0].reviews[0].id}
+                        // bgcolor={productDetails[0].reviews[0].color}
+                        // size={productDetails[0].reviews[0].size}
+                        review={productDetails[0].reviews[0].review}
+                        images={productDetails[0].reviews[0].images}
+                    />
+                    <CommonButton
+                        title={'View All Reviews'}
+                        height={50}
+                        width={'100%'}
+                        fontsize={16}
+                        fontweight={"400"}
+                        textalign={'center'}
+                        margintop={0}
+                        marginbottom={0}
+                        color={'#fff'}
+                        background={'#542689'}
+                        borderreduis={4}
+                        changeFuncation={() => navigation.navigate('Reviews')}
+                    />
                 </View>
+                {/****************************SimilarProducts***********************/}
                 <SimilarProducts />
             </ScrollView>
             <View

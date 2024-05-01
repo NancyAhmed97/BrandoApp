@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, TextInput, Button, Keyboard, Dimensions } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, TextInput, Button, Keyboard, Dimensions, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import List from "../Common/List";
 import { Feather, Entypo } from "@expo/vector-icons";
@@ -95,7 +95,7 @@ const MainNavbar = () => {
                 </View>
                 {clicked &&
 
-                    <List
+                     <List
                         searchPhrase={searchPhrase}
                         data={fakeData}
                         setClicked={setClicked}
